@@ -2,8 +2,6 @@
 
 A modern full-stack web application for purchasing smartphones with flexible EMI (Equated Monthly Installment) plans backed by mutual funds. Built with React, Node.js, Express, and MongoDB.
 
-![EMI Marketplace](https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&h=400&fit=crop)
-
 ## 🚀 Features
 
 - **Dynamic Product Catalog**: Browse latest smartphones with detailed specifications
@@ -181,50 +179,7 @@ Each product features:
 - 4 EMI plans (3, 6, 9, 12 months)
 - Interest rates from 0% to 13.5%
 - Cashback offers up to ₹2,000
-
-## 🎨 Color Scheme & Design
-
-The application uses a professional indigo and dark blue color palette:
-
-- **Primary Colors**: Indigo shades (#6366f1 to #312e81)
-- **Secondary Colors**: Dark blue/slate (#0f172a to #64748b) 
-- **Background**: Clean white (#ffffff) and light gray (#f8fafc)
-- **No Gradients**: Solid colors for a clean, professional look
-
-## 🚀 Deployment
-
-### Backend Deployment (Render/Railway)
-
-1. Create account on Render or Railway
-2. Connect your GitHub repository
-3. Add environment variables:
-   - `MONGODB_URI`
-   - `PORT`
-   - `FRONTEND_URL`
-4. Deploy the `backend` directory
-
-### Frontend Deployment (Vercel/Netlify)
-
-1. Create account on Vercel or Netlify
-2. Connect your GitHub repository
-3. Set build command: `npm run build`
-4. Set publish directory: `build`
-5. Add environment variable: `REACT_APP_API_URL`
-
-## 📝 Environment Variables
-
-### Backend (.env)
-```
-MONGODB_URI=mongodb://localhost:27017/emi_marketplace
-PORT=5000
-FRONTEND_URL=http://localhost:3000
-NODE_ENV=development
-```
-
-### Frontend (.env)
-```
-REACT_APP_API_URL=http://localhost:5000/api
-```
+- 
 
 ## 🧪 Testing
 
@@ -250,11 +205,6 @@ npm test
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 👨‍💻 Author
-
-**Your Name**
-- GitHub: [@your-username](https://github.com/your-username)
-- LinkedIn: [your-profile](https://linkedin.com/in/your-profile)
 
 ## 🙏 Acknowledgments
 
@@ -262,9 +212,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Icons from Heroicons
 - Images from Unsplash
 - UI components styled with Tailwind CSS
-
----
-
-**Live Demo**: [https://emi-marketplace.vercel.app](https://emi-marketplace.vercel.app)
-
-**API Documentation**: [https://emi-marketplace-api.render.com/api](https://emi-marketplace-api.render.com/api)
