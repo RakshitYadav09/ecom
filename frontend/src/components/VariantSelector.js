@@ -11,10 +11,10 @@ const VariantSelector = ({
       <button
         key={`${variant.type}-${variant.value}`}
         onClick={() => onVariantSelect(type, variant)}
-        className={`relative p-2 rounded-full border-3 transition-all duration-200 w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 flex items-center justify-center ${
+        className={`relative p-2 rounded-full border-3 transition-all duration-300 w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 flex items-center justify-center ${
           isSelected
-            ? 'border-brand-700 shadow-lg ring-2 ring-brand-700 ring-opacity-30'
-            : 'border-gray-300 hover:border-brand-400 hover:shadow-md'
+            ? 'border-brand-700 shadow-lg ring-4 ring-brand-700 ring-opacity-30 scale-105'
+            : 'border-gray-300 hover:border-brand-400 hover:shadow-md hover:scale-102'
         }`}
         title={variant.value}
       >
@@ -61,10 +61,10 @@ const VariantSelector = ({
       <button
         key={`${variant.type}-${variant.value}`}
         onClick={() => onVariantSelect(type, variant)}
-        className={`px-3 sm:px-4 py-2 sm:py-3 rounded-xl border-2 transition-all duration-200 ${
+        className={`px-3 sm:px-4 py-2 sm:py-3 rounded-xl border-2 transition-all duration-300 ${
           isSelected
-            ? 'border-brand-700 bg-brand-50 text-brand-800 shadow-md'
-            : 'border-brand-200 bg-white hover:border-brand-400 hover:shadow-sm'
+            ? 'border-brand-700 bg-brand-50 text-brand-800 shadow-lg ring-2 ring-brand-700 ring-opacity-20 scale-105'
+            : 'border-brand-200 bg-white hover:border-brand-400 hover:shadow-sm hover:scale-102'
         }`}
       >
         <div className="text-center">

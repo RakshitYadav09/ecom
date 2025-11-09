@@ -14,9 +14,14 @@ connectDB();
 
 // Middleware
 app.use(helmet());
-// CORS Configuration - Allow all origins for now to test
+// CORS Configuration for local development
 app.use(cors({
-  origin: true, // Allow all origins
+  origin: [
+    'http://localhost:3000',
+    'http://localhost:3001',
+    'http://127.0.0.1:3000',
+    process.env.FRONTEND_URL
+  ].filter(Boolean),
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin']

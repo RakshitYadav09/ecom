@@ -115,6 +115,7 @@ const EMICalculator = ({
   }, [customMode, customTenure, customDownpayment, updateEMICalculations]);
 
   const handlePlanSelect = (plan) => {
+    console.log('Plan selected:', plan);
     setSelectedPlan(plan);
     if (onPlanSelect) {
       onPlanSelect({
@@ -123,6 +124,14 @@ const EMICalculator = ({
         savings: mrp - totalPrice
       });
     }
+  };
+
+  const isPlanSelected = (plan) => {
+    if (!selectedPlan) return false;
+    const isSelected = selectedPlan.tenure === plan.tenure && 
+           selectedPlan.interestRate === plan.interestRate &&
+           selectedPlan.downpayment === plan.downpayment;
+    return isSelected;
   };
 
   const formatCurrency = (amount) => {
@@ -239,10 +248,10 @@ const EMICalculator = ({
             <div
               key={index}
               onClick={() => handlePlanSelect(plan)}
-              className={`relative border-2 rounded-lg p-3 sm:p-4 cursor-pointer transition-all ${
-                selectedPlan === plan
-                  ? 'border-brand-700 bg-brand-50 shadow-md'
-                  : 'border-brand-200 hover:border-brand-300 hover:shadow-sm'
+              className={`relative border-2 rounded-lg p-3 sm:p-4 cursor-pointer transition-all duration-300 ${
+                isPlanSelected(plan)
+                  ? 'border-brand-700 bg-brand-50 shadow-lg ring-2 ring-brand-700 ring-opacity-40'
+                  : 'border-gray-300 hover:border-brand-400 hover:shadow-sm hover:bg-gray-50'
               } ${plan.isPopular ? 'ring-2 ring-green-500 ring-opacity-20' : ''}`}
             >
               {plan.isPopular && (
@@ -254,36 +263,44 @@ const EMICalculator = ({
               <div className="flex items-start justify-between">
                 <div className="flex-1 min-w-0">
                   <div className="flex flex-col sm:flex-row sm:items-center space-y-1 sm:space-y-0 sm:space-x-4">
-                    <div className="text-base sm:text-lg font-semibold text-brand-900">
+                    <div className={`text-base sm:text-lg font-semibold ${
+                      isPlanSelected(plan) ? 'text-brand-900' : 'text-gray-800'
+                    }`}>
                       {formatCurrency(plan.monthlyAmount)}/month
                     </div>
                     <div className="flex items-center space-x-2 sm:space-x-4 text-xs sm:text-sm">
-                      <span className="text-brand-600">{plan.tenure} months</span>
+                      <span className={isPlanSelected(plan) ? 'text-brand-700 font-medium' : 'text-brand-600'}>
+                        {plan.tenure} months
+                      </span>
                       {plan.interestRate === 0 ? (
                         <span className="font-medium text-green-600">0% Interest</span>
                       ) : (
-                        <span className="text-brand-600">{plan.interestRate}% interest</span>
+                        <span className={isPlanSelected(plan) ? 'text-brand-700 font-medium' : 'text-brand-600'}>
+                          {plan.interestRate}% interest
+                        </span>
                       )}
                     </div>
                   </div>
                   
-                  <div className="flex flex-col sm:flex-row sm:items-center space-y-1 sm:space-y-0 sm:space-x-4 mt-2 text-xs sm:text-sm text-brand-600">
-                    <span>Downpayment: {formatCurrency(plan.downpayment)}</span>
+                  <div className="flex flex-col sm:flex-row sm:items-center space-y-1 sm:space-y-0 sm:space-x-4 mt-2 text-xs sm:text-sm">
+                    <span className={isPlanSelected(plan) ? 'text-brand-700 font-medium' : 'text-brand-600'}>
+                      Downpayment: {formatCurrency(plan.downpayment)}
+                    </span>
                     {plan.cashback > 0 && (
-                      <span className="text-green-600">
+                      <span className="text-green-600 font-medium">
                         Cashback: {formatCurrency(plan.cashback)}
                       </span>
                     )}
                   </div>
                 </div>
                 
-                <div className={`w-4 h-4 rounded-full border-2 flex-shrink-0 ml-2 ${
-                  selectedPlan === plan
-                    ? 'border-brand-700 bg-brand-700'
-                    : 'border-brand-300'
+                <div className={`w-6 h-6 rounded-full border-2 flex-shrink-0 ml-3 flex items-center justify-center transition-all duration-200 ${
+                  isPlanSelected(plan)
+                    ? 'border-brand-700 bg-brand-700 shadow-md'
+                    : 'border-gray-400 bg-white hover:border-brand-500'
                 }`}>
-                  {selectedPlan === plan && (
-                    <div className="w-2 h-2 bg-white rounded-full m-0.5"></div>
+                  {isPlanSelected(plan) && (
+                    <div className="w-3 h-3 bg-white rounded-full"></div>
                   )}
                 </div>
               </div>
